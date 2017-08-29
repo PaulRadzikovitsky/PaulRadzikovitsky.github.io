@@ -1,0 +1,238 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html{
+	font-size: 10px;
+	
+}
+body{
+
+	font-family: 'Montserrat', sans-serif;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.header{
+	position: relative;
+	top: 0;
+	left: 0;
+	font-family: 'Montserrat', sans-serif;
+	height: 9rem;
+	width: 100%;
+	background-color: #fff;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: rgb(240, 242, 247);
+}
+.header__logo_image{
+	vertical-align: middle;
+	height: 3rem;
+}
+.header__logo{
+	margin-left: 17rem;
+	display: inline-block;
+}
+
+.header__menu{
+	margin-left: 28rem;
+	margin-top: 0px;
+	font-weight: 500;
+	display: inline-block;
+	margin-right: 28rem;
+}
+
+.header__menu_menu-item{
+	text-decoration: none;
+	margin-left: 3.5rem;
+	margin-top: 0px;
+	height: 9rem;
+	line-height: 9rem;
+	color: #343e5c;
+	font-size: 2rem;
+	display: inline-block;
+}
+
+.header__cart{
+	
+	vertical-align: top;
+	height: 100%;
+	display: inline-block;
+}
+
+
+.header__cart_image{
+	margin-right: 1rem;
+	display: inline;
+	height: 2.3rem;	
+	vertical-align: middle;
+}
+.header__cart_text{
+	text-transform: uppercase;
+	font-size: 1.4rem;
+	vertical-align: middle;
+	line-height: 9rem;
+}
+.log-in:focus{
+	outline: none;
+}
+.log-in{
+	font-family: 'Montserrat', sans-serif;
+	outline: none;
+	font-weight: 500;
+	width: 8.1rem;
+  	height: 3rem;
+	border-width: 2px;
+  	border-color: rgb(227, 232, 240);
+ 	border-style: solid;
+  	border-radius: 16px;
+	background-color: #fff;
+	text-transform: uppercase;
+	color: #343e5c;
+}
+
+.header__Cart_number{
+margin-left: .6rem;	
+}
+.header__cart_num{
+	line-height: 2rem;
+	vertical-align: middle;
+	margin-left: 1rem;
+	margin-right: 4rem;
+	display: inline-block;
+	background-color: #e3e8f0;
+	height: 2rem;
+	width: 2rem;
+	border-radius: 50%;
+}
+.page-menu_menu-item:hover{
+	color: #343e5c;
+}
+.page-menu{
+	
+	display: inline-block;
+	background-color: #fff;
+	height: 7rem;
+	width: 100%;
+	text-transform: uppercase;
+	
+}
+.page-menu_menu-item:first-of-type {padding-left: 12rem;}
+.page-menu_menu-item{
+	display: inline-block;
+	line-height: 7rem;
+	vertical-align: middle;
+	margin-left: 5rem;
+	font-size: 1.7rem;
+	color: #b9bed1;
+	text-decoration: none;
+}
+.recolored{
+	color: #343e5c;
+}
+
+.page__menu_support{
+	display: inline-block;
+	line-height: 7rem;
+	vertical-align: middle;
+	margin-left: 57rem;
+	font-size: 1.7rem;
+	color: #b9bed1;
+	text-decoration: none;
+	margin-right: 3rem;
+}
+.search-input:focus{
+	outline: none;
+}
+.search-input{
+	width: 17.6rem;
+	font-size: 1.6rem;
+	font-weight: 500;	
+	color: #b9bed1;
+	padding-left: 4rem;
+	height: 6.8rem;
+	border: none;
+	border-left: solid rgb(240, 242, 247) 1px;
+	border-right: solid rgb(240, 242, 247) 1px;
+	background: url(../img/Search.svg) no-repeat 2rem center;
+}
+	::-webkit-input-placeholder {color:#b9bed1;}
+	::-moz-placeholder          {color:#b9bed1;}/* Firefox 19+ */
+	:-moz-placeholder           {color:#b9bed1;}/* Firefox 18- */
+	:-ms-input-placeholder      {color:#b9bed1;}
+.product-description{
+	position: absolute;
+	background: #15181E url(../img/iphone.png) no-repeat right 0rem;
+	background-size: 216rem;
+	height: 83vh;
+	width: 100%;
+	color: #fff;
+}
+
+.product-description__headline{
+	margin-top: 15rem;
+	margin-left: 31rem;
+	font-weight: 900;
+	font-size: 5.7rem;
+}
+.product-description__description{
+	margin-top: 4rem;
+	width: 50rem;
+	font-family:  'Crimson Text', serif;
+	margin-left: 31rem;
+	font-size: 3rem;
+}
+.product-description__button{
+	text-transform: uppercase;
+	color: #fff;
+	outline: none;
+	border-radius: 21px;
+ 	background-color: rgb(39, 84, 235);
+ 	border: none;
+ 	width: 165px;
+	height: 42px;
+	margin-left: 31rem;
+	margin-top: 10rem;
+}
