@@ -1,0 +1,173 @@
+@add-color: #ffe13e;
+html{
+	font-size: 10px;
+}
+body{
+	font-size: 1rem;
+	font-family: 'Raleway', sans-serif;
+	padding: 0px;
+	margin: 0px;
+}
+.header{
+	
+	z-index: 999;
+	background-color: #fff;
+	position: fixed;
+	top: 0;
+	width: 110%;
+	height: 14rem;
+.logo{
+	line-height: 14rem;
+	font-weight: 600;
+	font-size: 3rem;
+	padding-left: 15rem;
+	.header_logo-text-bold{
+		font-weight: 800;
+	}
+	img{
+		height: 2.7rem;
+	}
+	span{
+		font-family: 'RockWell';
+		vertical-align: middle;
+		.header_logo-text-bold{
+			vertical-align: middle;
+		}
+	}
+	img{
+		vertical-align: middle;
+	}
+}
+.menu{
+	line-height: 14rem;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 1.5rem;
+		
+		a{
+			color: #000;
+			margin-right: 6.1rem;
+			margin-top: -14rem;
+			display: inline-block;
+			vertical-align: middle;
+			text-decoration: none;
+		}
+		.divider-menu{
+			display: inline-block;
+		 	background-color: #ebebeb;
+			width: 1px;
+			height: 100%;
+		}
+		.menu_menu-item:hover{
+			color: @add-color;
+		}
+}
+.help{
+	padding-left: 5em;
+	.help-text{
+		margin-top: 2rem;
+		font-weight: 600;
+		font-size: 1.6rem;}
+	.help_btn{
+		margin-right: 2rem;
+		vertical-align: top;
+		background-color: @add-color;
+		border: none;
+		height: 5rem;
+		width: 13rem;
+		font-size: 1.4rem;
+		font-weight: 700;
+	}
+	.divider-help{
+		margin-top: .5rem;
+		display: inline-block;
+		height: 3.4rem;
+		background-color: #ebebeb;
+		width: 1px;
+	}
+	.help_phone{
+		margin-left: 2rem;
+		margin-top: -1rem;
+		font-weight: 600;
+		font-size: 3rem;
+		display: inline-block;
+		margin-top: -1rem;
+		vertical-align: middle;
+	}
+}
+}
+.main-screen{
+	color: #fff;
+	font-family: 'RockWell', sans-serif;
+	margin: 0;
+	padding: 0px;
+	width: 100%;
+	height: 100vh;
+	.bg{
+		padding: 0px;
+		background: url(../img/screen1.png) no-repeat center center;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+}
+.hello-text{
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: rgba(0,0,0, .3);
+	padding-top: 25rem;
+	.hello__hello{
+	font-size: 7rem;
+	}
+	.hello_descr{
+		font-family: 'Raleway', sans-serif;
+		font-size: 4rem;
+	}
+	img{
+		display: block;
+		margin: 0 auto;
+		margin-top: 2rem;
+		margin-bottom: 5rem;
+	}
+	.form{
+		font-family: 'Raleway', sans-serif;
+		display: inline-block;
+		border: 1.5rem solid rgba(255, 255, 255, .5);
+	}
+	input, select{
+		border: none;
+		color: #000;
+		height: 4rem;
+		font-size: 1.6rem;
+	}
+	input{
+		padding-left: 1rem;
+		width: 20rem;
+	}
+	::-webkit-input-placeholder {color:#000;}
+	::-moz-placeholder          {color:#000;}/* Firefox 19+ */
+	:-moz-placeholder           {color:#000;}/* Firefox 18- */
+	000:-ms-input-placeholder      {color:#000;}
+	select{
+		border: none;
+		
+	text-align: center;	
+	background-color: @add-color;
+	font-weight: 800;
+	width: 8rem;
+	}
+	button{
+		font-size: 1.6rem;
+		vertical-align: top;	
+		background-color: @add-color;
+		height: 4rem;
+		width: 16rem;
+		border: none;
+		border-color: @add-color;
+	}
+	button:focus{
+		outline: none;
+	}
+}
+}
