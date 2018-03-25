@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+		canvas{
+			margin: 0 auto;
+			box-sizing: border-box;
+			display: block;
+		}
+	#counter{
+		background-color: #000;
+		height: 75px;
+		line-height: 75px;
+		color: #fff;
+		text-align: center;
+		font-size: 25px;
+	}
+	#succ, #time{
+		display: inline-block;
+		width: 45%;
+	}
+	</style>
+</head>
+<body>
+
+	<div id="counter">
+		<div id="time"></div>
+		<div id="succ"></div>
+	</div>
+	<canvas id='canvas'></canvas>
+
+
+
+
+
+
+	<script>
+
+		var
+			canv 			= document.getElementById('canvas'),
+			ctx  			= canv.getContext('2d'),
+			isBtnPressed 	= false,
+			x 				= 0,
+			y 				= 0,
+			sz                 ,
+			r 				= 15,
+			p1 				= [x,y],
+			p2 				= [x+sz, y],
+			p3				= [x, y+sz],
+			p4 				= [x+sz, y+sz],
+			coord  			= [0,0],
+			number			= 30,
+			isEaten 		= true,
+			center 			= [0,0],
+			s				= 0,
+			isOver 			= false,
+			speed 			= 10,
+			isOn 			= false;
+			counter 		= document.getElementById('counter'),
+			succ 			= 0,
+			canUseC			= true;
+			bgColor 		= '#301d1d',
+			fillColor 		= '#ff4500',
+			CColor			= '#4169e1',
+			textColor		= '#fff';
+
+			sz = 2 * r;
+			canv.height = innerHeight/100 * 70;
+			canv.width = innerWidth/100 * 80;
+			ctx.font = '25px Arial';
+			ctx.fillText
+
+				ctx.fillStyle = bgColor;
+				ctx.fillRect(0,0, canv.width, canv.height);
+
+				ctx.fillStyle = fillColor;
+				ctx.fillRect(x,y, sz, sz);
+			
+
+				function startGame(){
+
+						var timer = setInterval(function(){
+						if (!number){
+							clearInterval(timer);
+							finishGame();
+							return;
+						}
+						number--;
+						document.getElementById('time').innerHTML = number;				
+					}, 1000);
+				}
+
+		var timer;
+		
+		function goDown(){ 
+				 timer = setInterval(function(){
+				
+						ctx.fillStyle = bgColor;
+						ctx.fillRect(x,y, sz, sz);
+						ctx.fillStyle = fillColor;					
+						y+=2;
+						if(y>canv.height){
+							y = 0;
+						}
+						ctx.fillRect(x, y, sz, sz);
+						console.log('d');
+						upd();
+						check()
+										
+					}, 6);
+			};
+
+			function goUp(){
+				 timer = setInterval(function(){
+				
+				 		ctx.fillStyle = bgColor;
+						ctx.fillRect(x,y, sz, sz);
+						ctx.fillStyle = fillColor;					
+						y-=2
+						if(y<0){
+							y = canv.height;
+						}
+						ctx.fillRect(x, y, sz, sz);
+						upd();
+						check()
+										
+					}, 6);
+			}
+
+			function goLeft(){
+				 timer = setInterval(function(){
+				
+					
+					ctx.fillStyle = bgColor;
+					ctx.fillRect(x,y, sz, sz);
+					ctx.fillStyle = fillColor;
+					x+=2;
+					if(x>canv.width){
+						x = 0;
+					}
+					ctx.fillRect(x, y, sz, sz);
+					upd();
+					check();	
+					}, 6);
+			}
+
+			function goRight(){
+				 timer = setInterval(function(){
+				
+						
+						ctx.fillStyle = bgColor;
+						ctx.fillRect(x,y, sz, sz);
+						ctx.fillStyle = fillColor;
+						 x-=2;
+						  if (x < 0){
+						 	x = canv.width;
+						 }
+						ctx.fillRect(x, y, sz, sz);
+						upd();
+						check()
+			
+					}, 6);
+			}
+
+			document.addEventListener('keydown', function(e){
+				clearInterval(timer);
+				if ((!isOver)&&(isOn)){
+					if (e.keyCode==87){
+						
+						goUp();
+
+					}
+					if (e.keyCode==83){
+						
+						goDown();
+
+					}
+					if (e.keyCode==68){
+						
+						goLeft();
+
+					}
+					if (e.keyCode==65){
+						
+						goRight();
+
+					}
+				}
+					if (canUseC){
+						if (e.keyCode == 67){
+			 		startGame();
+			 		generate();
+			 		isOn = true;
+			 		change = false;
+			 		canUseC = false;
+			 		goDown();
+				
+			 		}	
+					}
+					
+				
+
+
+
+
+
+			 	});
+
+
+				
+			
+
+
+			function generate(){
+					ctx.strokeStyle = bgColor;
+					ctx.beginPath();	
+					ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+					ctx.stroke();
+					if ((isEaten) && (number)){
+
+					
+							coord[0] = Math.floor(Math.random()*(canv.width - 100));
+							coord[1] = Math.floor(Math.random()*(canv.height - 100));
+
+						ctx.fillStyle = CColor;
+						ctx.beginPath();
+						ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+						ctx.fillStyle = CColor;
+						ctx.fill();
+						ctx.fillColor = fillColor;
+						startMoving();
+					isEaten = false;
+				}
+			}
+
+			function startMoving(){
+				var timer = setInterval(function(){
+					if (isEaten){
+						clearInterval(timer);
+						generate();
+					}
+					var
+						dir = ['n', 's', 'e', 'w'];
+						curr_dir = dir[Math.floor(Math.random()*4)];
+						if (curr_dir === 'n'){
+							ctx.fillStyle = bgColor;
+							ctx.beginPath();
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.fill();
+							ctx.beginPath();
+							ctx.strokeStyle = bgColor;
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.stroke();
+							ctx.fillStyle = CColor;
+							coord[1]+=20;
+							if (coord[1] > canv.height){
+								coord[1] = 0;
+							} 
+						
+							ctx.beginPath();
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.fill();
+							upd();
+						}
+						if (curr_dir === 's'){
+							ctx.fillStyle = bgColor;
+							ctx.beginPath();
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.fill();
+							ctx.beginPath();
+							ctx.strokeStyle = bgColor;
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.stroke();
+							ctx.fillStyle = CColor;
+							coord[1]-=20;
+							if (coord[1] < 0){
+								coord[1] = canv.height;
+							}
+							ctx.beginPath();
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.fill();
+							upd();
+						}
+						if (curr_dir === 'e'){
+							ctx.fillStyle = bgColor;
+							ctx.beginPath();
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.fill();
+							ctx.beginPath();
+							ctx.strokeStyle = bgColor;
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.stroke();
+							ctx.fillStyle = CColor;
+							coord[0]+=20;
+							if (coord[0] > canv.width){
+								coord[0] = 0;
+							} 
+							ctx.beginPath();
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.fill();
+							upd();
+						}
+						if (curr_dir === 'w'){
+							ctx.fillStyle = bgColor;
+							ctx.beginPath();
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.fill();
+							ctx.beginPath();
+							ctx.strokeStyle = bgColor;
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.stroke();
+							ctx.fillStyle = CColor;
+							coord[0]-=20;
+							if (coord[0] < 0){
+								coord[0] = canv.width;
+							}	
+							ctx.beginPath();
+							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+							ctx.fill();
+							upd();
+						}
+
+									
+				}, 150);
+
+
+
+
+
+
+
+
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 			function check() {
+				if ((getS(p1, coord) < r) || (getS(p2, coord)<r)||(getS(p3, coord)<r)||(getS(p4, coord)<r)){
+					
+						succ +=1;
+						document.getElementById('succ').innerHTML = succ;
+						isEaten = true;
+						strokeStyle = bgColor;
+						ctx.beginPath();
+						ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+						ctx.fillStyle = bgColor;
+						ctx.fill();
+						
+						ctx.fillStyle = bgColor;
+						
+						r= r - 1;
+						sz = r * 2; 
+						ctx.fill();
+						number += 5;
+						ctx.fillStyle = bgColor;
+						ctx.fillRect(0,0, canv.width, canv.height);
+						ctx.fillStyle = fillColor;
+						ctx.fillRect(x,y, sz,sz);
+						
+						console.log(r);
+						if (r <= 5) {
+							finishGame();
+						}
+						changeColor();
+						generate();
+				
+				}
+			}
+
+			function upd(){
+
+			p1 				= [x,y];
+			p2 				= [x+sz, y];
+			p3				= [x, y+sz];
+			p4 				= [x+sz, y+sz];
+			center[0]		= (p1[0] + p4[0]) / 2;
+			center[1] 		= (p1[1] + p4[1]) / 2;
+			s 				= Math.sqrt((coord[0] - center[0])*(coord[0] - center[0]) + (coord[1] - center[1]) * (coord[1] - center[1]));
+			}
+
+			function getS(p, c){
+				return Math.sqrt(((c[0] - p[0])*(c[0] - p[0])) + ((c[1] - p[1]) * (c[1] - p[1])));
+			}
+			
+			function changeColor(){
+
+				  var letters = '0123456789ABCDEF';
+				  var color = '#';
+				  bgColor = '#';
+				  CColor = '#';
+				  fillColor = '#';
+				  
+				  do for (var i = 0; i < 6; i++) {
+				  	bgColor   += letters[Math.floor(Math.random() * 16)];
+				  	CColor 	  += letters[Math.floor(Math.random() * 16)];
+				  	fillColor += letters[Math.floor(Math.random() * 16)];
+				  }	while ((bgColor === CColor)|| (bgColor === fillColor) || (fillColor === CColor));
+
+
+					ctx.fillStyle = bgColor;
+					ctx.fillRect(0,0, canv.width, canv.height);
+
+					ctx.fillStyle = fillColor;
+					ctx.fillRect(x,y, sz, sz);
+
+				  
+			}
+			
+
+
+			function finishGame(){
+				if (r <= 5 ){
+					counter.innerHTML = "Congrats!You won, your score is " + succ;
+				}
+				else{
+					counter.innerHTML = "Time is over, your score is " + succ;
+				}
+				number = 0;
+				r = 0;
+			 	ctx.fillStyle = 'black';
+			 	ctx.fillRect(0,0, canv.width, canv.height);
+			 	canv.style.borderColor = "black";
+			 	isOver = true;
+			 	clearInterval(timer);
+			}
+
+	</script>
+</body>
+
+
+</html>
