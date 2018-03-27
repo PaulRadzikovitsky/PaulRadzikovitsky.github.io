@@ -21,15 +21,19 @@
 		text-align: center;
 		font-size: 25px;
 	}
-	#succ, #time{
+	#succ, #time, span{
 		display: inline-block;
-		width: 45%;
+		width: 25%;
+	}
+	input{
+		margin-left: 20px;
 	}
 	</style>
 </head>
 <body>
 
 	<div id="counter">
+		<span id = "span">Enable dynamic color change<input id = "checkbox" type="checkbox"></span>
 		<div id="time"></div>
 		<div id="succ"></div>
 	</div>
@@ -49,13 +53,14 @@
 			x 				= 0,
 			y 				= 0,
 			sz                 ,
+			timer 				,
 			r 				= 15,
 			p1 				= [x,y],
 			p2 				= [x+sz, y],
 			p3				= [x, y+sz],
 			p4 				= [x+sz, y+sz],
 			coord  			= [0,0],
-			number			= 30,
+			number			= 45,
 			isEaten 		= true,
 			center 			= [0,0],
 			s				= 0,
@@ -68,11 +73,42 @@
 			bgColor 		= '#301d1d',
 			fillColor 		= '#ff4500',
 			CColor			= '#4169e1',
-			textColor		= '#fff';
+			textColor		= '#fff',
+			functions 		= ['CUp', 'CDown', 'CRight', 'CLeft'],
+			rand 			= Math.round(Math.random()),
+			dir 			= ['n', 's', 'e', 'w'],
+			ss 				= 0,
+			sz 				= 2 * r,
+			prevDir  		= '',
+			curr_dir 		= '',
+			lastDir 		= '',
+			sbtw 			= 9999,
+			mTimer			= 0,
+			fDir			= '',
+			cDir 			= '',
+			curCubicDir		= '',
+			prevCirDir		= '',
+			changer 		= 100001,
+			keyPressed		= false,
+			clDisabled		= false,
+			cubicSpeed		= 3;
 
-			sz = 2 * r;
-			canv.height = innerHeight/100 * 70;
-			canv.width = innerWidth/100 * 80;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			canv.height = innerHeight-75///100 * 100;
+			canv.width = innerWidth///100 * 100;
 			ctx.font = '25px Arial';
 			ctx.fillText
 
@@ -82,9 +118,14 @@
 				ctx.fillStyle = fillColor;
 				ctx.fillRect(x,y, sz, sz);
 			
+				function checkCl(){
+					return document.getElementById("checkbox").checked;
+					
+				}
+
+
 
 				function startGame(){
-
 						var timer = setInterval(function(){
 						if (!number){
 							clearInterval(timer);
@@ -92,114 +133,271 @@
 							return;
 						}
 						number--;
+						//changer -= 17;
+						if (number <= 10){
+							document.getElementById('time').style.fontSize = '40px';
+							document.getElementById('time').style.color 	= 'red';
+						}
+
+
 						document.getElementById('time').innerHTML = number;				
 					}, 1000);
 				}
 
-		var timer;
 		
-		function goDown(){ 
-				 timer = setInterval(function(){
-				
-						ctx.fillStyle = bgColor;
-						ctx.fillRect(x,y, sz, sz);
-						ctx.fillStyle = fillColor;					
-						y+=2;
-						if(y>canv.height){
-							y = 0;
-						}
-						ctx.fillRect(x, y, sz, sz);
-						console.log('d');
-						upd();
-						check()
-										
-					}, 6);
-			};
 
-			function goUp(){
-				 timer = setInterval(function(){
-				
-				 		ctx.fillStyle = bgColor;
-						ctx.fillRect(x,y, sz, sz);
-						ctx.fillStyle = fillColor;					
-						y-=2
-						if(y<0){
-							y = canv.height;
-						}
-						ctx.fillRect(x, y, sz, sz);
-						upd();
-						check()
-										
-					}, 6);
-			}
-
-			function goLeft(){
-				 timer = setInterval(function(){
-				
-					
-					ctx.fillStyle = bgColor;
-					ctx.fillRect(x,y, sz, sz);
-					ctx.fillStyle = fillColor;
-					x+=2;
-					if(x>canv.width){
-						x = 0;
+	
+			function cubicMove(){
+				timer = setInterval(function (){
+					if (keyPressed){
+						//	clearInterval(timer);
 					}
-					ctx.fillRect(x, y, sz, sz);
-					upd();
-					check();	
-					}, 6);
-			}
-
-			function goRight(){
-				 timer = setInterval(function(){
-				
-						
 						ctx.fillStyle = bgColor;
 						ctx.fillRect(x,y, sz, sz);
 						ctx.fillStyle = fillColor;
-						 x-=2;
-						  if (x < 0){
-						 	x = canv.width;
-						 }
+
+						if (curCubicDir === 'n'){
+							y-=cubicSpeed;
+							if(y<0){
+								y = canv.height;
+							}
+						}
+						if (curCubicDir === 's'){
+							y+=cubicSpeed;;
+							if(y>canv.height){
+								y = 0;
+							}
+						}
+						if (curCubicDir === 'e'){
+							x-=cubicSpeed;;
+						 	 if (x < 0){
+						 		x = canv.width;
+							 }
+						}
+						if (curCubicDir === 'w'){
+							x+=cubicSpeed;;
+							if(x>canv.width){
+								x = 0;
+							}
+						}
+
 						ctx.fillRect(x, y, sz, sz);
 						upd();
 						check()
-			
-					}, 6);
+				}, 1);
 			}
+		
+
+
+
+			function move(){
+			 	mTimer = setInterval(function(){					
+						
+				if (isEaten){
+					clearInterval(mTimer);
+				}
+
+				if ((getS(p1, coord) < 100) || (getS(p2, coord)<100)||(getS(p3, coord)<100)||(getS(p4, coord)<100)){
+							clearInterval(mTimer);
+					do {
+						cDir = dir[Math.floor(Math.random() * 4)];
+				}	while ((cDir === prevDir) || (cDir === curCubicDir) || (cDir === prevCirDir));
+
+				ctx.fillStyle = bgColor;
+								ctx.beginPath();
+								ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+								ctx.fill();
+								ctx.beginPath();
+								ctx.strokeStyle = bgColor;
+								ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+								ctx.stroke();
+								ctx.fillStyle = CColor;
+
+									if (cDir === 'n'){
+										prevCirDir = 'n';
+										coord[1]-=100;
+										if (coord[1] < 0){
+											coord[1] = canv.height;
+										}
+									} 
+									if (cDir === 's'){
+										prevCirDir = 's';
+										coord[1]+=100;
+										if (coord[1] > canv.height){
+											coord[1] = 0;
+										} 
+									} 
+									if (cDir === 'e'){
+										prevCirDir = 'e';
+										coord[0]+=100;
+										if (coord[0] > canv.width){
+											coord[0] = 0;
+										} 
+									} 
+									if (cDir === 'w'){
+										prevCirDir = 'w';
+										coord[0]-=100;
+										if (coord[0] < 0){
+											coord[0] = canv.width;
+										}	
+									} 
+				move();
+				}
+
+					if (Math.abs(changer % 73) == 0){
+						clearInterval(mTimer);
+					do {
+						cDir = dir[Math.floor(Math.random() * 4)];
+				}	while ((cDir === prevDir) || (cDir === curCubicDir) || (cDir === prevCirDir));
+
+				ctx.fillStyle = bgColor;
+								ctx.beginPath();
+								ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+								ctx.fill();
+								ctx.beginPath();
+								ctx.strokeStyle = bgColor;
+								ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+								ctx.stroke();
+								ctx.fillStyle = CColor;
+
+									if (cDir === 'n'){
+										prevCirDir = 'n';
+										coord[1]-=10;
+										if (coord[1] < 0){
+											coord[1] = canv.height;
+										}
+									} 
+									if (cDir === 's'){
+										prevCirDir = 's';
+										coord[1]+=10;
+										if (coord[1] > canv.height){
+											coord[1] = 0;
+										} 
+									} 
+									if (cDir === 'e'){
+										prevCirDir = 'e';
+										coord[0]+=10;
+										if (coord[0] > canv.width){
+											coord[0] = 0;
+										} 
+									} 
+									if (cDir === 'w'){
+										prevCirDir = 'w';
+										coord[0]-=10;
+										if (coord[0] < 0){
+											coord[0] = canv.width;
+										}	
+									} 
+				move();
+						console.log(Math.abs(changer % 73));
+					}
+					ctx.fillStyle = bgColor;
+					ctx.beginPath();
+					ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+					ctx.fill();
+					ctx.beginPath();
+					ctx.strokeStyle = bgColor;
+					ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+					ctx.stroke();
+					ctx.fillStyle = CColor;
+						if (cDir === 'n'){
+							prevCirDir = 'n';
+							coord[1]-=5;
+							if (coord[1] < 0){
+								coord[1] = canv.height;
+							}
+						}
+						if (cDir === 's'){
+							prevCirDir = 's';
+							coord[1]+=5;
+							if (coord[1] > canv.height){
+								coord[1] = 0;
+							} 
+						}
+						if (cDir === 'e'){
+							prevCirDir = 'e';
+							coord[0]+=5;
+							if (coord[0] > canv.width){
+								coord[0] = 0;
+							} 
+						}
+						if (cDir === 'w'){
+							prevCirDir = 'w';
+							coord[0]-=5;
+							if (coord[0] < 0){
+								coord[0] = canv.width;
+							}	
+						}
+					ctx.beginPath();
+					ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
+					ctx.fill();
+					upd();
+					check();
+					sbtw = getS(center, coord);
+					changer -= 17;
+				}, 4);
+				
+
+						}
+
 
 			document.addEventListener('keydown', function(e){
-				clearInterval(timer);
 				if ((!isOver)&&(isOn)){
 					if (e.keyCode==87){
+						clearInterval(timer);
+						keyPressed = true;
+						prevDir = 'n';
+						curCubicDir  = 'n';
+						keyPressed = false;
+						cubicMove();
 						
-						goUp();
 
 					}
-					if (e.keyCode==83){
+				else 	if (e.keyCode==83){
+						clearInterval(timer);
+						keyPressed = true;
+						prevDir = 's';
+						curCubicDir  = 's';
+						keyPressed = false;
+						cubicMove();
 						
-						goDown();
 
 					}
-					if (e.keyCode==68){
-						
-						goLeft();
+				else	if (e.keyCode==68){
+						clearInterval(timer);
+						keyPressed = true;
+						lastDir = 'w';
+						curCubicDir  = 'w';
+						keyPressed = false;
+						cubicMove();
+					
 
 					}
-					if (e.keyCode==65){
+				else	if (e.keyCode==65){
+						clearInterval(timer);	
+						keyPressed = true;
+						prevDir = 'e'
+						curCubicDir  = 'e';
+						keyPressed = false;
+						cubicMove();
 						
-						goRight();
 
 					}
 				}
-					if (canUseC){
+				else 	if (canUseC){
 						if (e.keyCode == 67){
+					curCubicDir = 'w';
+						prevDir = 'w';
+					cubicMove();
 			 		startGame();
 			 		generate();
+			 		clDisabled = checkCl();
+			 		document.getElementById("span").style.display = 'none';
 			 		isOn = true;
 			 		change = false;
 			 		canUseC = false;
-			 		goDown();
+			 		keyPressed 	= false;
+			 	
 				
 			 		}	
 					}
@@ -234,119 +432,22 @@
 						ctx.fillStyle = CColor;
 						ctx.fill();
 						ctx.fillColor = fillColor;
+						
+
 						startMoving();
 					isEaten = false;
 				}
 			}
 
-			function startMoving(){
-				var timer = setInterval(function(){
-					if (isEaten){
-						clearInterval(timer);
-						generate();
+			
+
+
+						function startMoving(){
+							clearInterval(mTimer);
+								cDir = dir[Math.floor(Math.random()*4)];
+								move();
+
 					}
-					var
-						dir = ['n', 's', 'e', 'w'];
-						curr_dir = dir[Math.floor(Math.random()*4)];
-						if (curr_dir === 'n'){
-							ctx.fillStyle = bgColor;
-							ctx.beginPath();
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.fill();
-							ctx.beginPath();
-							ctx.strokeStyle = bgColor;
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.stroke();
-							ctx.fillStyle = CColor;
-							coord[1]+=20;
-							if (coord[1] > canv.height){
-								coord[1] = 0;
-							} 
-						
-							ctx.beginPath();
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.fill();
-							upd();
-						}
-						if (curr_dir === 's'){
-							ctx.fillStyle = bgColor;
-							ctx.beginPath();
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.fill();
-							ctx.beginPath();
-							ctx.strokeStyle = bgColor;
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.stroke();
-							ctx.fillStyle = CColor;
-							coord[1]-=20;
-							if (coord[1] < 0){
-								coord[1] = canv.height;
-							}
-							ctx.beginPath();
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.fill();
-							upd();
-						}
-						if (curr_dir === 'e'){
-							ctx.fillStyle = bgColor;
-							ctx.beginPath();
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.fill();
-							ctx.beginPath();
-							ctx.strokeStyle = bgColor;
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.stroke();
-							ctx.fillStyle = CColor;
-							coord[0]+=20;
-							if (coord[0] > canv.width){
-								coord[0] = 0;
-							} 
-							ctx.beginPath();
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.fill();
-							upd();
-						}
-						if (curr_dir === 'w'){
-							ctx.fillStyle = bgColor;
-							ctx.beginPath();
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.fill();
-							ctx.beginPath();
-							ctx.strokeStyle = bgColor;
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.stroke();
-							ctx.fillStyle = CColor;
-							coord[0]-=20;
-							if (coord[0] < 0){
-								coord[0] = canv.width;
-							}	
-							ctx.beginPath();
-							ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
-							ctx.fill();
-							upd();
-						}
-
-									
-				}, 150);
-
-
-
-
-
-
-
-
-			}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -361,37 +462,51 @@
 						ctx.arc(coord[0], coord[1], r, 0, Math.PI * 2);
 						ctx.fillStyle = bgColor;
 						ctx.fill();
-						
+						number += 10;
 						ctx.fillStyle = bgColor;
 						
 						r= r - 1;
 						sz = r * 2; 
 						ctx.fill();
-						number += 5;
+						number += 1;
 						ctx.fillStyle = bgColor;
 						ctx.fillRect(0,0, canv.width, canv.height);
 						ctx.fillStyle = fillColor;
 						ctx.fillRect(x,y, sz,sz);
 						
-						console.log(r);
+					
+							cubicSpeed+=1;
+						
 						if (r <= 5) {
 							finishGame();
 						}
-						changeColor();
-						generate();
-				
+
+						if (clDisabled){
+							changeColor();
+						}						
+						clearInterval(mTimer);
+						generate();				
 				}
 			}
 
 			function upd(){
 
-			p1 				= [x,y];
-			p2 				= [x+sz, y];
-			p3				= [x, y+sz];
-			p4 				= [x+sz, y+sz];
-			center[0]		= (p1[0] + p4[0]) / 2;
-			center[1] 		= (p1[1] + p4[1]) / 2;
-			s 				= Math.sqrt((coord[0] - center[0])*(coord[0] - center[0]) + (coord[1] - center[1]) * (coord[1] - center[1]));
+				p1 				= [x,y];
+				p2 				= [x+sz, y];
+				p3				= [x, y+sz];
+				p4 				= [x+sz, y+sz];
+				center[0]		= (p1[0] + p4[0]) / 2;
+				center[1] 		= (p1[1] + p4[1]) / 2;
+				s 				= Math.sqrt((coord[0] - center[0])*(coord[0] - center[0]) + (coord[1] - center[1]) * (coord[1] - center[1]));
+				sbtw = getS(center, coord);
+
+				if ((getS(p1, coord) < 100) || (getS(p2, coord)<100)||(getS(p3, coord)<100)||(getS(p4, coord)<100)){
+							clearInterval(mTimer);
+										do {
+											cDir = dir[Math.floor(Math.random() * 4)];
+									}	while ((cDir === prevDir) || (cDir === curCubicDir) || (cDir === prevCirDir));
+						move();
+				}
 			}
 
 			function getS(p, c){
@@ -399,7 +514,7 @@
 			}
 			
 			function changeColor(){
-
+				// make it optional
 				  var letters = '0123456789ABCDEF';
 				  var color = '#';
 				  bgColor = '#';
@@ -426,7 +541,7 @@
 
 			function finishGame(){
 				if (r <= 5 ){
-					counter.innerHTML = "Congrats!You won, your score is " + succ;
+					counter.innerHTML = "Congrats! You won, your score is " + succ;
 				}
 				else{
 					counter.innerHTML = "Time is over, your score is " + succ;
@@ -434,10 +549,15 @@
 				number = 0;
 				r = 0;
 			 	ctx.fillStyle = 'black';
-			 	ctx.fillRect(0,0, canv.width, canv.height);
+			 //	ctx.fillRect(0,0, canv.width, canv.height);
 			 	canv.style.borderColor = "black";
 			 	isOver = true;
 			 	clearInterval(timer);
+			 	clearInterval(mTimer);
+			}
+
+			function sqr(a){
+				return a * a;
 			}
 
 	</script>
