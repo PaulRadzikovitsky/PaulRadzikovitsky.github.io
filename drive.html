@@ -474,8 +474,9 @@
 						ctx.fillStyle = fillColor;
 						ctx.fillRect(x,y, sz,sz);
 						
-					
+						if (cubicSpeed <=3){
 							cubicSpeed+=1;
+						}
 						
 						if (r <= 5) {
 							finishGame();
