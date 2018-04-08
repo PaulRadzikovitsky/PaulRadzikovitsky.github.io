@@ -223,7 +223,7 @@ footer {
     transform: rotateZ(0deg); } }
 
 
-@media screen and (max-width: 900px){    
+@media  (max-width: 900px){    
 .info {
   margin-bottom: 4rem;
   display: block;
