@@ -109,7 +109,7 @@ header {
     .info .descr h3 {
       font-weight: 600;
       font-size: 2rem;
-      margin-top: 2rem;
+      margin-top: ;: 2rem;
       margin-bottom: 3rem; }
     .info .descr p {
       font-weight: 400;
@@ -154,16 +154,15 @@ footer {
   display: block; }
 
 .openmenu {
+
   font-weight: 700;
   text-align: center;
   width: 15rem;
   display: none;
   position: absolute;
-  right: 5rem;
+  right: 0rem;
   top: 0rem; }
-  @media screen and (min-width: 600px) {
-    .openmenu {
-      display: inline-block; } }
+  
   .openmenu li {
     font-weight: 700;
     tansform: rotateZ(-190deg);
@@ -223,7 +222,7 @@ footer {
     transform: rotateZ(0deg); } }
 
 
-@media  (max-width: 900px){    
+@media screen and (max-width: 900px){    
 .info {
   margin-bottom: 4rem;
   display: block;
@@ -244,5 +243,8 @@ header .logo {
   .last-proj .container .proj {
     display: block;
     width: 60%; }
+    header .openmenu{
+    	display: inline-block;
+    }
 }
 /*# sourceMappingURL=style.css.map */
