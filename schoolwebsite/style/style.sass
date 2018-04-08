@@ -1,0 +1,241 @@
+$bold:  700
+$semi-bold: 600
+$reg: 400
+html
+	font-size: 10px
+	font-weight: $reg
+a
+	color: #fff
+	text-decoration: none
+body
+	position: relative
+	color: #fff
+	font-size: 1.5rem
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+	padding-top: 7rem
+*
+	font-family: 'Open Sans', sans-serif
+
+header
+	z-index: 9
+	position: fixed
+	top: 0
+	right: 0
+	width: 100%
+	height: 7rem
+	line-height: 7rem
+	color: white
+	background-color: #262933
+	nav
+		width: 30%
+		margin-left: 15rem
+		text-transform: uppercase
+		display: inline-block
+		ul
+			display: inline-flex
+			align-items: center
+			@media screen and (max-width: 1000px)
+				display: none
+			li
+				font-weight: $bold
+				margin-right: 5rem
+				display: inline-block
+				a
+					color: #fff
+					text-decoration: none
+	
+
+	.logo
+		height: 100%
+		line-height: 7rem 
+		display: inline-block
+		margin-left: 35rem
+		font-size: 2rem
+
+
+.intro
+	width: 100%
+	height: 60vh
+	.pic-block
+		width: 100%
+		height: 50%
+		background: url(../img/pic-block1.png) no-repeat center center
+		-webkit-background-size: cover
+		background-size: cover
+		.frame	
+			border: 10px white solid
+			background-color: #aeaeae
+			margin: 0 auto
+			width: 50%
+			height: 120%
+			position: relative
+			top: 7rem
+			box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.29)
+.info
+	height: auto
+	min-height: 40vh
+	width: 100%
+	background: url(../img/pic-block1.png) no-repeat center center
+	-webkit-background-size: cover
+	background-size: cover
+	padding-left: 10rem
+	padding-right: 10rem
+	box-sizing: border-box
+	color: white
+	display: flex
+	
+	@media screen and (max-width: 400px)
+		display: block
+	.descr
+		display: inline-block
+		padding-bottom: 5rem
+		width: 25%
+		margin-bottom: 5rem
+		@media screen and (max-width: 400px)
+			display: block !important 
+			width: 100%
+
+		box-sizing: border-box
+		
+		text-align: center
+		margin: 0 auto
+		height: 100%
+		padding-top: 8rem
+		span
+			font-size: 6rem
+			margin-bottom: 3rem
+		h3
+			font-weight: $semi-bold
+			font-size: 2rem
+			margin-top: 2rem
+			margin-bottom: 3rem
+		p
+			font-weight: $reg
+			line-height: 3rem
+			font-size: 1.5rem
+.last-proj
+	box-sizing: border-box 
+	width: 100%	
+	margin-bottom: 10rem
+	.container
+		width: 100%
+		display: flex
+		align-items: center
+		.proj
+			display: inline-block
+			margin: 10rem auto
+			height: 45rem
+			width: 25%
+			background-color: #a3aefe
+	span
+		display: block
+		margin: 0 auto
+		text-align: center
+		margin-top: 3rem
+		font-size: 3rem
+		font-weight: $bold
+		color: rgba (0,0,0,.3)
+footer
+	width: 100%
+	height: 7rem
+	position: relative
+	bottom: 0
+	left: 0
+	text-align: center
+	background-color: #262933
+	line-height: 7rem
+	font-size: 2rem
+
+.openmenu:hover > ul > li 
+	display: block
+
+.openmenu
+	@media screen and (min-width:  600px)
+		display: inline-block
+	
+
+	font-weight: $bold
+	text-align: center
+	width: 15rem
+	display: none
+	ul
+	position: absolute
+	right: 5rem	
+	top: 0rem
+	li
+		font-weight: $bold
+		tansform: rotateZ(-190deg)
+		perspective: 100px
+		perspective-origin: 30%
+		display: none
+		background-color: #262933
+		width: 15rem
+		color: #fff
+		text-decoration: none
+		text-transform: uppercase
+		text-align: center
+	
+
+
+.openmenu:hover > ul 
+	perspective: 1000px
+.openmenu:hover >  ul >	li
+	
+	/*display: block*/
+	opacity: 0
+	
+	@for $i from 1 through 4  
+		&:nth-child(#{$i})
+			animation: 
+				name: menu1
+				duration: 300ms
+				timing-function: ease-in-out
+				delay: 0
+				fill-mode: forwards
+				delay: (300ms * $i) - 300 
+
+
+@keyframes menu1
+	0%
+		
+		opacity: 0
+		transform: translateY(15px)
+		tansform: rotateZ(-190deg)
+	100%
+		
+		opacity: 1
+		transform: translateY(0px)
+		transform: rotateZ(0deg)
+
+
+
+
+
+
+@media screen and  (max-width: 800px)
+.info	
+	margin-bottom: 4rem
+	display: block
+	margin: 0
+	padding: 0
+	
+	.descr 
+		display: block
+		width: 70%
+
+header 
+	.logo
+		margin: 0
+		display: block
+		width: 100%
+		text-align: center
+.last-proj
+	.container
+		display: block
+		.proj
+			display: block
+			width: 60%
