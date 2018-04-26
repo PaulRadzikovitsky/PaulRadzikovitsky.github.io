@@ -64,8 +64,7 @@ header{
 .menu_block{
 	box-sizing: border-box;
 	vertical-align: top;
-	min-height: 100%;
-	width: 33%;
+	width: 35%;
 	margin-right: 0px;
 	background-color: #fff;
 	padding-right: 2rem;
@@ -156,15 +155,9 @@ header{
 	color: #fff;
 }
 .left-books{
-
+	height: auto;
 	padding-top: 3.9rem;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
+
 }
 .lbook{
 	position: relative;
@@ -173,6 +166,25 @@ header{
 	background-color: #000;
 	display: inline-block;
 }
+.frow,.srow{
+	position: relative;
+	display: block;
+	width: 90%;
+	height: 50%;
+	margin: 0% auto;
+}
+.l{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.r{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+
 .l-link{
 	display: block;
 	position: relative;
@@ -233,7 +245,7 @@ header{
 }
 footer{
 	line-height: 7rem;
-	position: absolute;
+	position: fixed;
 	box-sizing: border-box;
 	font-size: 13px;
 	height: 7rem;
@@ -385,16 +397,69 @@ footer{
 		padding: 0;
 		margin: 0 auto;
 	}
-	.menu_biography{
-		padding-top: 2rem;
-	}
+
 	.menu{
-		height: 90vh;
+		width: 100%;
+		position: static;
+		justify-content: space-between;
+		min-height: 90vh;
+		height: auto;
 	}
 	body{
 		padding-bottom: 5rem;
 	}
 	html{
-		font-size: 14px;
+		font-size: 5px;
+	}
+	.left-books, .right-books{
+		display: inline-block;
+
+	}
+	.rbook, .lbook{
+		position: static;
+		display: block;
+		text-align: center;
+		margin: 0 auto;
+		padding: 0;
+		height: 50rem;
+		width: 15rem
+	}
+	.r,.l{
+		position: static;
+		width: 100%;
+		padding: 0;
+		margin: 0 auto;
+		margin-bottom: .5rem;
+	}
+	.srow, .frow{
+		background-color: #fff;
+		height: auto;
+	}
+	.menu_block{
+		padding: 0;
+		margin: 0;
+		height: auto;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		margin-bottom: 3rem;
+
+	}
+	.menu_biography{
+		padding-top: 2rem;
+		padding-right: .5rem;
+		padding-left: .5rem;
+	}
+
+}
+@media screen and (max-width: 1700px){
+	.rbook, .lbook{
+		width: 20rem
+	}
+}
+@media screen and (max-width: 1450px)
+{
+	.rbook, .lbook{
+		height: 25rem;
+		width: 18rem
 	}
 }
