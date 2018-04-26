@@ -1,0 +1,475 @@
+﻿html{
+	height: auto;
+	font-size: 10px;
+}
+*{
+	margin: 0;
+	padding: 0	
+}
+body{
+
+	box-sizing: border-box;
+	min-height: 100%;
+	height: auto;
+	
+}
+header{
+	top: 0;
+	bottom: 0;
+	padding-top: 1rem;
+	padding-bottom:  1rem;
+	width: 100%;
+	height: 7rem;
+	position: fixed;
+	background-color: rgba(255,255,255,.9);
+	z-index: 200;
+}
+.h_inner{
+
+	width: 100%;
+	height: 100%;
+}
+ .hp{
+ 	font-size: 1.5rem;
+ 	height: 30%;
+ 	width: 100%;
+ 	text-align: center;
+ 	font-weight: bold;
+ }
+ .logo{
+ 	text-align: center;
+ 	display: block;
+ 	width: 100%;
+ 	height: 70%;
+ }
+.logo__picture{
+	display: inline-block;
+	background: url(../deathly-hallows.svg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	height: 100%;
+	width: 25%;
+}
+.menu{
+	margin-top: 6.7rem;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+
+	padding-top: 4rem;
+	width: 100%;
+	position: relative;
+	height: 80vh;
+	justify-content: space-between;
+	margin-bottom: 1.6rem;
+
+}
+
+.menu_block{
+	box-sizing: border-box;
+	vertical-align: top;
+	width: 35%;
+	margin-right: 0px;
+	background-color: #fff;
+	padding-right: 2rem;
+	height: auto;
+	min-width: 33%;
+	max-width: 33%;	
+
+}
+
+.menu h2{
+	text-align: center;
+	margin-bottom: 4rem;
+}
+.photo-wrapper{
+	background-color: #000;
+	position: relative;
+	
+	left: 0;
+	width: 30%;
+	height: 100%;
+	display: inline-block;	
+
+}
+.bio_photo{
+	display: inline-block;
+	height: 13rem;
+	width: 13rem;
+	background: url(../img/JKRowling.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	background-size: cover;
+	float: left;
+	margin-right: 2rem;
+	margin-bottom: 2rem;
+}
+.bio{
+	position: relative;
+	vertical-align: top;
+	display: inline-block;
+	width: 60%;
+	font-size: 1.5rem;
+	margin-left: -4px;
+	height: 100%;
+}
+.bio p{
+	position: relative;
+	padding-left: 2rem;
+}
+.photo_inwrapper{
+	width: 100%;
+	height: 25%;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.photo1{
+	background: url(../img/JKRowling.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.photo2{
+	background: url(../img/R2.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.photo3{
+	background: url(../img/R3.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.photo4{
+	background: url(../img/R1.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.menu_biography__link{
+	padding: 1rem;
+	position: absolute;
+	display: block;
+	bottom: 5rem;
+	right: 0rem;
+	border: 1px solid rgba(0,0,0,.8);
+	border-radius: 30px;
+	-webkit-transition: all .4s;
+	-o-transition: all .4s;
+	transition: all .4s;
+}
+.menu_biography__link:hover{
+	background-color: rgba(0,0,0,.8);
+	color: #fff;
+}
+.left-books{
+	height: auto;
+	padding-top: 3.9rem;
+
+}
+.lbook{
+	position: relative;
+	height: 32rem;
+	width: 24rem;
+	background-color: #000;
+	display: inline-block;
+}
+.frow,.srow{
+	position: relative;
+	display: block;
+	width: 90%;
+	height: 50%;
+	margin: 0% auto;
+}
+.l{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.r{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+
+.l-link{
+	display: block;
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.book_1, .b1 .photo1{
+	background: url(../img/book1.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.book_2, .b2 .photo1{
+	background: url(../img/book.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.book_3, .b3 .photo1{
+	background: url(../img/hp3.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;;
+}
+.book_4, .b4 .photo1{
+	background: url(../img/hop4.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.book_5, .b5 .photo1{
+	background: url(../img/book5.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.book_6, .b6 .photo1{
+	background: url(../img/hp6.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.book_7, .b7 .photo1{
+	background: url(../img/hp7.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.book_8, .b8 .photo1{
+	background: url(../img/hp8.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.right-books{
+	padding-top: 3.9rem;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+footer{
+	line-height: 7rem;
+	position: absolute;
+	box-sizing: border-box;
+	font-size: 13px;
+	height: 7rem;
+	width: 100%;
+	background-color: rgba(255,255,255,.9);
+	text-align: center;
+	bottom: 0;
+	right: 0;
+}
+.outter{
+	vertical-align: middle;
+	display: inline-block;
+	line-height: 1.5rem;
+}
+.book_desc{
+	display: none;
+}
+
+.b1 .photo2{
+	background: url(../img/hp1/hpb1.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b1 .photo3{
+	background: url(../img/hp1/hpb12.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b1 .photo4{
+	background: url(../img/hp1/hpb13.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b2 .photo2{
+	background: url(../img/hp2/hpb21.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b2 .photo3{
+	background: url(../img/hp2/hpb22.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b2 .photo4{
+	background: url(../img/hp2/hpb23.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b3 .photo2{
+	background: url(../img/hp3/hpb32.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b3 .photo3{
+	background: url(../img/hp3/hpb33.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b3 .photo4{
+	background: url(../img/hp3/hpb34.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b4 .photo2{
+	background: url(../img/hp4/hpb42.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b4 .photo3{
+	background: url(../img/hp4/hpb43.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b4 .photo4{
+	background: url(../img/hp4/hpb44.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b5 .photo2{
+	background: url(../img/hp5/hpb52.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b5 .photo3{
+	background: url(../img/hp5/hpb53.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b5 .photo4{
+	background: url(../img/hp5/hpb54.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b6 .photo2{
+	background: url(../img/hp6/hpb62.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b6 .photo3{
+	background: url(../img/hp6/hpb63.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b6 .photo4{
+	background: url(../img/hp6/hpb64.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b7 .photo2{
+	background: url(../img/hp7/hpb72.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b7 .photo3{
+	background: url(../img/hp7/hpb73.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b7 .photo4{
+	background: url(../img/hp7/hpb74.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b8 .photo2{
+	background: url(../img/hp8/hpb82.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b8 .photo3{
+	background: url(../img/hp8/hpb83.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.b8 .photo4{
+	background: url(../img/hp8/hpb84.jpg) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+
+
+@media screen and (max-width: 1200px){
+	footer{
+		position: relative;
+		margin-bottom: -3rem;
+	}
+	.photo-wrapper{
+		display: none;
+	}
+	.bio{
+		padding-top: 2rem;
+		width: 100%;
+		display: block;
+		padding: 0;
+		margin: 0 auto;
+	}
+
+	.menu{
+		width: 100%;
+		position: static;
+		justify-content: space-between;
+		min-height: 90vh;
+		height: auto;
+	}
+	body{
+		padding-bottom: 5rem;
+	}
+	html{
+		font-size: 5px;
+	}
+	.left-books, .right-books{
+		display: inline-block;
+
+	}
+	.rbook, .lbook{
+		position: static;
+		display: block;
+		text-align: center;
+		margin: 0 auto;
+		padding: 0;
+		height: 50rem;
+		width: 15rem
+	}
+	.r,.l{
+		position: static;
+		width: 100%;
+		padding: 0;
+		margin: 0 auto;
+		margin-bottom: .5rem;
+	}
+	.srow, .frow{
+		background-color: #fff;
+		height: auto;
+	}
+	.menu_block{
+		padding: 0;
+		margin-top: 0rem;
+		height: auto;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		/*margin-bottom: 3rem;*/
+
+	}
+	.menu_biography{
+		padding-top: 2rem;
+		padding-right: .5rem;
+		padding-left: .5rem;
+	}
+
+}
+@media screen and (max-width: 1700px){
+	.rbook, .lbook{
+		width: 20rem
+	}
+}
+@media screen and (max-width: 1450px)
+{
+	.rbook, .lbook{
+		height: 25rem;
+		width: 18rem
+	}
+}
