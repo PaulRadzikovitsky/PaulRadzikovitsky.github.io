@@ -1,4 +1,11 @@
-﻿body{
+﻿html{
+	font-size: 10px;
+	height: auto;
+}
+	body{
+	padding: 0;
+	margin: 0;
+
 	background-color: #CCCC99;
 }
 *{
@@ -6,7 +13,14 @@
 	font-weight: 300;
 }
 
-
+.main{
+	position: relative;
+	width: 100%;
+	min-height: 100%;
+	height: auto;
+	top: 0;
+	left: 0;
+}
 header{
 	top: 0;
 	bottom: 0;
@@ -43,25 +57,6 @@ header{
 	background-size: 100% 100%;
 	height: 100%;
 	width: 25%;
-}
-
-
-footer{
-	line-height: 7rem;
-	position: absolute;
-	box-sizing: border-box;
-	font-size: 13px;
-	height: 7rem;
-	width: 100%;
-	background-color: rgba(255,255,255,.9);
-	text-align: center;
-	bottom: 0;
-	right: 0;
-}
-.outter{
-	vertical-align: middle;
-	display: inline-block;
-	line-height: 1.5rem;
 }
 
 
@@ -130,4 +125,21 @@ a:hover{
 	
 	color: rgba(0,0,0,.8);
 
+}
+footer{
+	line-height: 7rem;
+	position: relative;
+	box-sizing: border-box;
+	font-size: 13px;
+	height: 7rem;
+	width: 100%;
+	background-color: rgba(255,255,255,.9);
+	text-align: center;
+	bottom: 0;
+	left: 0;
+}
+.outter{
+	vertical-align: middle;
+	display: inline-block;
+	line-height: 1.5rem;
 }

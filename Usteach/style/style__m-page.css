@@ -1,4 +1,5 @@
-html{
+﻿html{
+	height: auto;
 	font-size: 10px;
 }
 *{
@@ -7,7 +8,10 @@ html{
 }
 body{
 
-	padding-top: 6.7rem;
+	box-sizing: border-box;
+	min-height: 100%;
+	height: auto;
+	
 }
 header{
 	top: 0;
@@ -47,6 +51,7 @@ header{
 	width: 25%;
 }
 .menu{
+	margin-top: 6.7rem;
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;
@@ -58,6 +63,7 @@ header{
 	position: relative;
 	height: 80vh;
 	justify-content: space-between;
+	margin-bottom: 1.6rem;
 
 }
 
@@ -245,7 +251,7 @@ header{
 }
 footer{
 	line-height: 7rem;
-	position: fixed;
+	position: absolute;
 	box-sizing: border-box;
 	font-size: 13px;
 	height: 7rem;
@@ -387,6 +393,10 @@ footer{
 
 
 @media screen and (max-width: 1200px){
+	footer{
+		position: relative;
+		margin-bottom: -3rem;
+	}
 	.photo-wrapper{
 		display: none;
 	}
@@ -437,11 +447,11 @@ footer{
 	}
 	.menu_block{
 		padding: 0;
-		margin: 0;
+		margin-top: 0rem;
 		height: auto;
 		padding-top: 1rem;
 		padding-bottom: 1rem;
-		margin-bottom: 3rem;
+		/*margin-bottom: 3rem;*/
 
 	}
 	.menu_biography{
